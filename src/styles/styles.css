@@ -1,0 +1,65 @@
+/* src/styles/styles.css */
+
+:root {
+    /* Colors */
+    --bg-main: #000111;
+    --bg-dark: #000000;
+    --bg-white: #fffff7;
+    --bg-black: #1c1c1c;
+    --bg-gray: gray;
+    --text-main: #cccccc;
+    --text-small: 0.75rem;
+    --bg-accent: #ffa500;
+
+    /* Typography */
+	--font-main: 'Nunito', sans-serif;
+    --text-responsive: clamp(15px, 4vw, 30px);
+
+    /* Spacing */
+    --padding-screen: 2rem 1.4rem;
+
+    /* Borders */
+    --main-border: solid 0.1rem var(--bg-white);
+    --main-border-rd: 8px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    min-height: 100dvh;
+}
+
+#app {
+    min-height: 100dvh;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: var(--font-main);
+	text-align: center;
+    user-select: none;
+}
+
+#top-bar {
+    background-color: var(--theme-blue);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: clamp(30px, 5vw, 60px);
+}
+
+/* #landing img {
+    height: clamp(20px, 5vw, 50px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */

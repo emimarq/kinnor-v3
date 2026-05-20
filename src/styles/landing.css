@@ -1,0 +1,51 @@
+/* LANDING STYLES */
+:root {
+    --theme-blue: #3feded;
+}
+
+#landing {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 480px;
+    min-height: 100dvh;
+    margin: 0 auto;
+    padding: 2rem 1.4rem;
+    padding-top: clamp(50px, 5vw, 80px);
+}
+
+#landing-tagline {}
+
+.landing-btn {
+    display: block;
+    width: 100%;
+    padding: .75rem;
+    background-color: transparent;
+    color: var(--font-main);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.landing-btn span {
+    padding:8px 15px;
+    background-color: var(--bg-white);
+    flex: 1;
+    position: relative;
+    height: 100%;
+    width: 14.28%;
+    border-left: solid 1px var(--bg-gray);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: var(--bg-dark);
+}
+
+#landing-btn-area {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}

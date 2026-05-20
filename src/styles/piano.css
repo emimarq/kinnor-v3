@@ -1,0 +1,55 @@
+/* PIANO STYLES */
+#wrapper {}
+
+#wrapper h1 {
+/* 	text-align: center;
+ */}
+
+.white-key span {
+	position: absolute;
+	bottom: 2px;
+	left: 50%;
+	transform: translateX(-50%);
+	touch-action: none;
+	user-select: none;
+	color: var(--bg-dark);
+}
+
+button {
+	border: none;
+}
+
+.piano-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--bg-dark);
+	padding: 1rem;
+	min-height: 150px;
+	width: 100%;
+	aspect-ratio: 7 / 3;
+	border-radius: 12px;
+}
+
+.white-key {
+	background-color: var(--bg-white);
+	flex: 1;
+	position: relative;
+	height: 100%;
+	width: 14.28%;
+	border-left: solid 1px var(--bg-gray);
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.black-key {
+	background-color: var(--bg-black);
+	position: absolute;
+	top: 0;
+	left: 63%;
+	height: 58%;
+	width: 80%;
+	z-index: 1;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
