@@ -10,6 +10,7 @@
     --text-main: #cccccc;
     --text-small: 0.75rem;
     --bg-accent: #ffa500;
+    --option-select: #555555;
 
     /* Typography */
 	--font-main: 'Nunito', sans-serif;
@@ -55,11 +56,3 @@ body {
     width: 100%;
     height: clamp(30px, 5vw, 60px);
 }
-
-/* #landing img {
-    height: clamp(20px, 5vw, 50px);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-} */

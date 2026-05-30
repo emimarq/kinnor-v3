@@ -28,6 +28,15 @@
     width: 100%;
 }
 
+#onboard-play-area h2 {
+    font-size: clamp(20px, 5.5vw, 35px);
+    padding: 1.5rem 0;
+}
+
+#onboard-play-area video {
+    width: 100%;
+}
+
 .onboard-out-left {
     animation: move-left 0.4s ease-in forwards;
 }
@@ -38,8 +47,7 @@
 
 #onboarding-cont-btn {
     padding: 0.75rem;
-    background-color: var(--theme-blue);
-    color: #000;
+    color: var(--text-main);
     font-family: var(--font-main);
     font-size: 1rem;
     font-weight: 700;
@@ -48,6 +56,15 @@
     cursor: pointer;
     margin-top: 0.5rem;
     transition: opacity 0.2s;
+}
+
+#onboarding-cont-btn:disabled {
+    background-color: var(--option-select);
+}
+
+#onboarding-cont-btn:not(:disabled) {
+    background-color: var(--theme-blue);
+    color: #000 !important;
 }
 
 #choices-area {
@@ -59,9 +76,8 @@
 
 .choices {
     padding: 2rem;
-    flex: 1 1 calc(50% - 10px); /* two per row */
+    flex: 1 1 calc(50% - 10px);
     min-width: 120px;
-    /* background-color: var(--bg-accent); */
     color: var(--bg-white);
     border: var(--main-border);
     border-radius: var(--main-border-rd);
@@ -82,6 +98,15 @@
 
 #progress-bar-fill {
     height: 100%;
-    width: 50%;
     border-radius: var(--main-border-rd);
+    background-color: var(--theme-blue);
+    transition: width 0.3s ease;
+}
+
+.option-selected {
+    background-color: var(--option-select);
+}
+
+#gif-area-container img {
+    width: 80%;
 }
