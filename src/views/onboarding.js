@@ -51,7 +51,14 @@ export function renderOnboarding() {
             key: "referral",
             text: "How did you hear about us?",
             options: ["Social media", "Search engine", "A friend", "YouTube", "Other"],
+            btnTxt: "Continue!"
+        },
+        {
+            key: "account permission",
+            text: "Do you want to save your information?",
+            options: ["Yes, create an account.", "I will make an account later."],
             btnTxt: "Wrap things up!"
+
         }
     ]
 
@@ -143,7 +150,11 @@ export function renderOnboarding() {
             if (currentIndex === onboardPrompts.length) {
                 updateProgressBar();
                 setTimeout(() => {
-                    renderSignup();
+                    if (userResponses["account permission"] === "I will make an account later.") {
+                        renderLessonTree();
+                    } else {
+                        renderSignup();
+                    }
                 }, 550)
                 return;
             }

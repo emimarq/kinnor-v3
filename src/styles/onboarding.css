@@ -75,17 +75,25 @@
 }
 
 .choices {
-    padding: 2rem;
-    flex: 1 1 calc(50% - 10px);
+    padding: 1rem 1.25rem;
+    flex: 1 1 calc(50% - 12px);
     min-width: 120px;
     color: var(--bg-white);
-    border: var(--main-border);
-    border-radius: var(--main-border-rd);
+    font-family: var(--font-main);
+    font-weight: 700;
     font-size: var(--text-responsive);
+    background: transparent;
+    border: 2px solid #2a2d4a;
+    border-bottom: 4px solid #2a2d4a;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: transform 0.08s ease, border-bottom-width 0.08s ease, background 0.15s ease;
+    text-align: center;
 }
 
 .choices:hover {
-    cursor: pointer;
+    border-color: #3a3d5e;
+    border-bottom-color: #3a3d5e;
 }
 
 #progress-bar {
@@ -105,6 +113,7 @@
 
 .option-selected {
     background-color: var(--option-select);
+    background-color: #212452;
 }
 
 #gif-area-container img {
