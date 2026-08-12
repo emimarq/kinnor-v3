@@ -2,6 +2,7 @@ import "../styles/lesson-player.css"
 import { buildPiano } from "../components/piano/pianoBuilder.js";
 import { renderLessonTree } from "./lessonTree.js";
 import { playRhythm } from "../components/rhythm/rhythm-builder.js";
+import { renderXpScreen } from "./xp-screen.js";
 
 // Load all lesson modules in subdirectories lazily
 const lessonModules = import.meta.glob('../lessons/**/*.js');
@@ -95,6 +96,19 @@ export async function renderLessonPlayer(lesson) {
                     if (keyBtn) {
                         keyBtn.classList.add("flashing");
                     }
+                });
+            }
+
+            // Note label behavior
+            // Reset all note labels to visible by default first
+            piano.querySelectorAll("span").forEach((span) => {
+                span.style.display = "";
+            });
+
+            // If noteLabels is explicitly set to false, hide all spans
+            if (currentPrompt.noteLabels === false) {
+                piano.querySelectorAll("span").forEach((span) => {
+                    span.style.display = "none";
                 });
             }
         } else if (prompts[currentIndex].rhythm) {

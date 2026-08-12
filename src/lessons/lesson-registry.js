@@ -15,15 +15,18 @@ export const lessonRegistry = [
         },
         {
           lessonTitle: "Spot G and A fast",
-          lessonSummary: "Use the three black key pattern to recognize G and A."
+          lessonSummary: "Use the three black key pattern to recognize G and A.",
+          lessonId: "piano-layout/the-g-and-a-key"
         },
         {
           lessonTitle: "Master F and B",
-          lessonSummary: "Lock in on F and B using the edges of the three black key group."
+          lessonSummary: "Lock in on F and B using the edges of the three black key group.",
+          lessonId: "piano-layout/the-f-and-b-key"
         },
         {
           lessonTitle: "Check on learning",
-          lessonSummary: "Solo time. Just you, the keys, and what you remember."
+          lessonSummary: "Solo time! Just you, the keys, and what you remember.",
+          lessonId: "piano-layout/piano-layout-check-on-learning"
         }
       ],
       "Musical Distance": [

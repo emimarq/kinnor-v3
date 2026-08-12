@@ -1,81 +1,62 @@
-// ./src/utils/showXpScreen.js
+// ./src/views/xp-screen.js
 
-export function renderXpScreen(earnedXP = null) {
-    return new Promise((resolve) => {
-        const wrapper = document.createElement('div');
-        wrapper.classList.add('xp-screen-wrapper');
+import "../styles/xp-screen.css";
+import { renderLessonTree } from "./lessonTree";
 
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = './src/styles/xp-screen.css';
-        document.head.appendChild(link);
+export function renderXpScreen(stats = { xp: 15, streak: 3, lessonsCompleted: 12, fact: "Music notation originally developed in the Middle Ages using neumes." }) {
+    const app = document.getElementById("app");
 
-        link.onload = async () => {
-            const totalXp = await getXp();
-            const earned = Number.isFinite(earnedXP) ? Number(earnedXP) : 0;
-            const displayXp = earned > 0 ? `+${earned}` : `0`;
-
-            const userRef = doc(db, 'users', auth.currentUser.uid);
-            const snap = await getDoc(userRef);
-            const data = snap.exists() ? snap.data() : {};
-            const lessonsCompleted = data.lessonsCompleted?.length || 0;
-            const streak = data.streak || 0;
-
-            wrapper.innerHTML = `
-                <div class="xp-container">
-                    <div class="xp-art-area">
-                        <div class="xp-badge-glow">
-                            <i class="fa-solid fa-trophy xp-trophy-icon"></i>
-                        </div>
-                        <h2>Lesson Completed!</h2>
-                        <p class="xp-validation-text">${validations.getRandomValidation()}</p>
+    app.innerHTML = `
+        <div id="xp-screen-container">
+            <div class="xp-card">
+                <div class="xp-header">
+                    <div class="xp-badge-icon">
+                        <i class="fa-solid fa-trophy"></i>
                     </div>
-
-                    <div class="xp-stats-grid">
-                        <div class="xp-stat-card">
-                            <i class="fa-solid fa-bolt stat-icon xp-bolt"></i>
-                            <div class="stat-info">
-                                <span class="stat-value">${displayXp}</span>
-                                <span class="stat-label">XP Earned</span>
-                            </div>
-                        </div>
-
-                        <div class="xp-stat-card">
-                            <i class="fa-solid fa-fire stat-icon xp-fire"></i>
-                            <div class="stat-info">
-                                <span class="stat-value">${streak}</span>
-                                <span class="stat-label">Day Streak</span>
-                            </div>
-                        </div>
-
-                        <div class="xp-stat-card">
-                            <i class="fa-solid fa-list-check stat-icon xp-check"></i>
-                            <div class="stat-info">
-                                <span class="stat-value">${lessonsCompleted}</span>
-                                <span class="stat-label">Lessons Completed</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="facts-area">
-                        <div class="facts-box">
-                            <div class="fact-header">
-                                <i class="fa-solid fa-lightbulb"></i>
-                                <h3>Did you know?</h3>
-                            </div>
-                            <p>${getRandomFact()}</p>
-                        </div>
-                    </div>
-
-                    <button class="xp-continue-btn">Continue</button>
+                    <h2>Lesson Completed!</h2>
+                    <p class="xp-subtitle">You're making great progress!</p>
                 </div>
-            `;
 
-            wrapper.querySelector('.xp-continue-btn').onclick = function () {
-                window.showLessonTree();
-            };
+                <div class="xp-stats-container">
+                    <div class="xp-stat-item">
+                        <i class="fa-solid fa-bolt xp-icon-bolt"></i>
+                        <div class="xp-stat-details">
+                            <span class="xp-stat-value">+${stats.xp}</span>
+                            <span class="xp-stat-label">XP Earned</span>
+                        </div>
+                    </div>
 
-            resolve(wrapper);
-        };
+                    <div class="xp-stat-item">
+                        <i class="fa-solid fa-fire xp-icon-fire"></i>
+                        <div class="xp-stat-details">
+                            <span class="xp-stat-value">${stats.streak}</span>
+                            <span class="xp-stat-label">Day Streak</span>
+                        </div>
+                    </div>
+
+                    <div class="xp-stat-item">
+                        <i class="fa-solid fa-list-check xp-icon-check"></i>
+                        <div class="xp-stat-details">
+                            <span class="xp-stat-value">${stats.lessonsCompleted}</span>
+                            <span class="xp-stat-label">Lessons Completed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="xp-fact-box">
+                    <div class="xp-fact-header">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span>Did you know?</span>
+                    </div>
+                    <p>${stats.fact}</p>
+                </div>
+
+                <button id="xp-continue-btn">Continue</button>
+            </div>
+        </div>
+    `;
+
+    document.getElementById("xp-continue-btn")?.addEventListener("click", () => {
+        renderLessonTree();
     });
-};
+}
