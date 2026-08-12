@@ -114,15 +114,10 @@ export async function renderLessonPlayer(lesson) {
 
             // Note label behavior
             // Reset all note labels to visible by default first
-            piano.querySelectorAll("span").forEach((span) => {
-                span.style.display = "";
-            });
-
-            // If noteLabels is explicitly set to false, hide all spans
             if (currentPrompt.noteLabels === false) {
-                piano.querySelectorAll("span").forEach((span) => {
-                    span.style.display = "none";
-                });
+                piano.classList.add("hide-note-labels");
+            } else {
+                piano.classList.remove("hide-note-labels");
             }
         } else if (prompts[currentIndex].rhythm) {
             piano.style.display = "none";
