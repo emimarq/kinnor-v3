@@ -3,13 +3,15 @@
 import "../styles/xp-screen.css";
 import { renderLessonTree } from "./lessonTree";
 import { getFunFact } from "../components/encourage/fun-facts";
+import { getValidation } from "../components/encourage/validation-words";
 
 export function renderXpScreen(stats = {}) {
     const {
         xp = 15,
         streak = 3,
         lessonsCompleted = 12,
-        fact = getFunFact()
+        fact = getFunFact(),
+        validation = getValidation()
     } = stats;
 
     const app = document.getElementById("app");
@@ -23,7 +25,7 @@ export function renderXpScreen(stats = {}) {
                     </div>
                     <div class="xp-header-text">
                         <h2>Lesson Completed!</h2>
-                        <p class="xp-subtitle">You're making great progress!</p>
+                        <p class="xp-subtitle">${validation}</p>
                     </div>
                 </div>
 

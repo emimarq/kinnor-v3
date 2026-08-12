@@ -6,11 +6,11 @@ import { renderLessonPlayer } from './views/lesson-player.js';
 import { renderCourseMap } from './views/course-map.js';
 import { renderXpScreen } from './views/xp-screen.js';
 
-renderLessonTree();
+//renderLessonTree();
 //renderLessonPlayer();
 //renderLanding();
 //renderCourseMap();
-//renderXpScreen();
+renderXpScreen();
 
 
 //srenderTesting();
