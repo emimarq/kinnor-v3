@@ -2,7 +2,6 @@ import "../styles/lesson-player.css"
 import { buildPiano } from "../components/piano/pianoBuilder.js";
 import { renderLessonTree } from "./lessonTree.js";
 import { playRhythm } from "../components/rhythm/rhythm-builder.js";
-import { keyEvents } from "../components/piano/keyEvents.js";
 
 // Load all lesson modules in subdirectories lazily
 const lessonModules = import.meta.glob('../lessons/**/*.js');
@@ -156,10 +155,10 @@ export async function renderLessonPlayer(lesson) {
 
                         // Clear all rhythm beeps BEFORE progressing
                         beepsKillswitch();
-                        
+
                         console.log("Complete!");
                         setTimeout(() => {
-                            app.innerHTML = '<h1>GOOD JOB!</h1>';
+                            renderXpScreen();
                         }, 750);
                         return;
                     }
