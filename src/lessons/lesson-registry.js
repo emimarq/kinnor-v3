@@ -26,7 +26,7 @@ export const lessonRegistry = [
         {
           lessonTitle: "Check on learning",
           lessonSummary: "Solo time! Just you, the keys, and what you remember.",
-          lessonId: "piano-layout/piano-layout-check-on-learning"
+          lessonId: "piano-layout/piano-layout-naturals-check-on-learning"
         }
       ],
       "Musical Distance": [
@@ -49,20 +49,24 @@ export const lessonRegistry = [
       ],
       "Piano Layout: Accidentals": [
         {
-          lessonTitle: "Diving Into Flats <span>♭</span>",
-          lessonSummary: "Discover how flats lower notes by a half step."
+          lessonTitle: "What are Sharps <span>♯</span>?",
+          lessonSummary: "Learn how sharps raise notes by a half step.",
+          lessonId: "piano-layout/sharps"
         },
         {
-          lessonTitle: "What are Sharps <span>♯</span>?",
-          lessonSummary: "Learn how sharps raise notes by a half step."
+          lessonTitle: "Diving Into Flats <span>♭</span>",
+          lessonSummary: "Discover how flats lower notes by a half step.",
+          lessonId: "piano-layout/flats"
         },
         {
           lessonTitle: "Enharmonics Explained",
-          lessonSummary: "One sound, two names — why it matters in music theory."
+          lessonSummary: "One sound, two names — why it matters in music theory.",
+          lessonId: "piano-layout/enharmonics"
         },
         {
           lessonTitle: "Check on learning",
-          lessonSummary: "Solo time. Just you, the keys, and what you remember."
+          lessonSummary: "Solo time! Just you, the keys, and what you remember.",
+          lessonId: "piano-layout/piano-layout-accidentals-check-on-learning"
         }
       ],
       "Rhythm & Meter": [
