@@ -15,19 +15,13 @@ export async function renderLessonPlayer(lesson) {
     }
 
     const lessonData = await lessonModules[modulePath]();
-    const prompts = lessonData.prompts;
+    // Insures lesson is a fresh start
+    const prompts = structuredClone(lessonData.prompts);
 
     const app = document.getElementById("app");
 
     let currentIndex = 0;
     let stopRhythmFn = null;
-
-    const beepsKillswitch = () => {
-        if (stopRhythmFn) {
-            stopRhythmFn();
-            stopRhythmFn = null;
-        }
-    }
 
     app.innerHTML = `
         <div id="lesson-player-container">
@@ -52,6 +46,24 @@ export async function renderLessonPlayer(lesson) {
 
     // Initialize Piano
     buildPiano("lesson-player-piano-area");
+
+    // Reset rhythm beeps
+    const beepsKillswitch = () => {
+        if (stopRhythmFn) {
+            stopRhythmFn();
+            stopRhythmFn = null;
+        }
+    }
+
+    // Remove all correct and incorrect classes
+    function resetVisuals() {
+        document.querySelectorAll(".piano-wrapper button").forEach((btn) => {
+            btn.classList.remove("correct");
+        });
+        document.querySelectorAll(".piano-wrapper button").forEach((btn) => {
+            btn.classList.remove("incorrect");
+        });
+    }
 
     // Progress bar logic
     function updateProgressBar() {
@@ -84,6 +96,7 @@ export async function renderLessonPlayer(lesson) {
 
         const currentPrompt = prompts[currentIndex];
 
+        // Conditionals to display or hide certain components on the page
         if (prompts[currentIndex].piano) {
             piano.style.display = "block";
             rhythm.style.display = "none";
@@ -151,16 +164,15 @@ export async function renderLessonPlayer(lesson) {
             keyBtn.classList.add("correct");
             keyBtn.classList.remove("flashing");
 
-            // Key inputs
+            // Check user input for test against target notes
             if (userInputs.size === currentPrompt.targetNotes.length) {
                 isActive = true;
 
                 setTimeout(() => {
                     userInputs.clear();
 
-                    document.querySelectorAll(".piano-wrapper button").forEach((btn) => {
-                        btn.classList.remove("correct");
-                    });
+                    // Reset all correct visuals
+                    resetVisuals();
 
                     currentIndex++;
                     updateProgressBar();
@@ -170,7 +182,6 @@ export async function renderLessonPlayer(lesson) {
                         // Clear all rhythm beeps BEFORE progressing
                         beepsKillswitch();
 
-                        console.log("Complete!");
                         setTimeout(() => {
                             renderXpScreen();
                         }, 750);
@@ -182,7 +193,15 @@ export async function renderLessonPlayer(lesson) {
                 }, 400)
             }
         } else {
-            console.log("Nope");
+            keyBtn.classList.add("incorrect");
+            prompts.push(currentPrompt);
+            userInputs.clear();
+            setTimeout(() => {
+                resetVisuals();
+            }, 250)
+            currentIndex++;
+            updateProgressBar();
+            renderPrompt();
         }
     });
 

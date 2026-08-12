@@ -74,6 +74,11 @@ button {
 	border-bottom: 6px solid #4dad50;
 }
 
+.white-key.incorrect,
+.black-key.incorrect {
+	background-color: rgb(249, 143, 143);
+}
+
 @keyframes whiteFlash {
 	0% {
 		background: #d0d0d0;
