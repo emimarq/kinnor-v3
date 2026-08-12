@@ -56,7 +56,7 @@ export async function renderLessonPlayer(lesson) {
     }
 
     // Remove all correct and incorrect classes
-    function resetVisuals() {
+    function resetKeys() {
         document.querySelectorAll(".piano-wrapper button").forEach((btn) => {
             btn.classList.remove("correct");
         });
@@ -172,7 +172,7 @@ export async function renderLessonPlayer(lesson) {
                     userInputs.clear();
 
                     // Reset all correct visuals
-                    resetVisuals();
+                    resetKeys();
 
                     currentIndex++;
                     updateProgressBar();
@@ -197,11 +197,11 @@ export async function renderLessonPlayer(lesson) {
             prompts.push(currentPrompt);
             userInputs.clear();
             setTimeout(() => {
-                resetVisuals();
+                resetKeys();
+                currentIndex++;
+                updateProgressBar();
+                renderPrompt();
             }, 250)
-            currentIndex++;
-            updateProgressBar();
-            renderPrompt();
         }
     });
 

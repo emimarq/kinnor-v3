@@ -2,8 +2,16 @@
 
 import "../styles/xp-screen.css";
 import { renderLessonTree } from "./lessonTree";
+import { getFunFact } from "../components/encourage/fun-facts";
 
-export function renderXpScreen(stats = { xp: 15, streak: 3, lessonsCompleted: 12, fact: "Music notation originally developed in the Middle Ages using neumes." }) {
+export function renderXpScreen(stats = {}) {
+    const {
+        xp = 15,
+        streak = 3,
+        lessonsCompleted = 12,
+        fact = getFunFact()
+    } = stats;
+
     const app = document.getElementById("app");
 
     app.innerHTML = `
@@ -13,15 +21,17 @@ export function renderXpScreen(stats = { xp: 15, streak: 3, lessonsCompleted: 12
                     <div class="xp-badge-icon">
                         <i class="fa-solid fa-trophy"></i>
                     </div>
-                    <h2>Lesson Completed!</h2>
-                    <p class="xp-subtitle">You're making great progress!</p>
+                    <div class="xp-header-text">
+                        <h2>Lesson Completed!</h2>
+                        <p class="xp-subtitle">You're making great progress!</p>
+                    </div>
                 </div>
 
                 <div class="xp-stats-container">
                     <div class="xp-stat-item">
                         <i class="fa-solid fa-bolt xp-icon-bolt"></i>
                         <div class="xp-stat-details">
-                            <span class="xp-stat-value">+${stats.xp}</span>
+                            <span class="xp-stat-value">+${xp}</span>
                             <span class="xp-stat-label">XP Earned</span>
                         </div>
                     </div>
@@ -29,7 +39,7 @@ export function renderXpScreen(stats = { xp: 15, streak: 3, lessonsCompleted: 12
                     <div class="xp-stat-item">
                         <i class="fa-solid fa-fire xp-icon-fire"></i>
                         <div class="xp-stat-details">
-                            <span class="xp-stat-value">${stats.streak}</span>
+                            <span class="xp-stat-value">${streak}</span>
                             <span class="xp-stat-label">Day Streak</span>
                         </div>
                     </div>
@@ -37,8 +47,8 @@ export function renderXpScreen(stats = { xp: 15, streak: 3, lessonsCompleted: 12
                     <div class="xp-stat-item">
                         <i class="fa-solid fa-list-check xp-icon-check"></i>
                         <div class="xp-stat-details">
-                            <span class="xp-stat-value">${stats.lessonsCompleted}</span>
-                            <span class="xp-stat-label">Lessons Completed</span>
+                            <span class="xp-stat-value">${lessonsCompleted}</span>
+                            <span class="xp-stat-label">Lessons</span>
                         </div>
                     </div>
                 </div>
@@ -48,13 +58,22 @@ export function renderXpScreen(stats = { xp: 15, streak: 3, lessonsCompleted: 12
                         <i class="fa-solid fa-lightbulb"></i>
                         <span>Did you know?</span>
                     </div>
-                    <p>${stats.fact}</p>
+                    <p>${fact}</p>
                 </div>
+
+                <div id="xp-lesson-feedback-btn">How was this lesson? <span><i>Tell us.</i></span></div>
 
                 <button id="xp-continue-btn">Continue</button>
             </div>
         </div>
     `;
+    document.getElementById("xp-lesson-feedback-btn")?.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        //renderLessonFeedback();
+        console.log("Feedback")
+    });
+
 
     document.getElementById("xp-continue-btn")?.addEventListener("click", () => {
         renderLessonTree();

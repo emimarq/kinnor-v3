@@ -4,11 +4,13 @@ import { renderLessonTree } from "./views/lessonTree.js"
 import { renderTesting_responsive } from './views/testin-responsive.js';
 import { renderLessonPlayer } from './views/lesson-player.js';
 import { renderCourseMap } from './views/course-map.js';
+import { renderXpScreen } from './views/xp-screen.js';
 
-renderLessonTree();
+//renderLessonTree();
 //renderLessonPlayer();
 //renderLanding();
 //renderCourseMap();
+renderXpScreen();
 
 
 //srenderTesting();
