@@ -1,5 +1,3 @@
-/* src/styles/styles.css */
-
 :root {
     /* Colors */
     --bg-main: #000111;
@@ -11,10 +9,11 @@
     --text-small: 0.75rem;
     --bg-accent: #ffa500;
     --option-select: #555555;
+    --theme-blue: #0055ff;
 
     /* Typography */
-	--font-main: 'Nunito', sans-serif;
-    --text-responsive: clamp(15px, 4vw, 30px);
+    --font-main: 'Nunito', sans-serif;
+    --text-responsive: clamp(15px, 4vw, 20px);
 
     /* Spacing */
     --padding-screen: 2rem 1.4rem;
@@ -44,15 +43,16 @@ body {
     background-color: var(--bg-main);
     color: var(--text-main);
     font-family: var(--font-main);
-	text-align: center;
+    text-align: center;
     user-select: none;
 }
 
 #top-bar {
     background-color: var(--theme-blue);
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
-    height: clamp(30px, 5vw, 60px);
+    height: clamp(30px, 5vw, 50px);
+    z-index: 1001;
 }

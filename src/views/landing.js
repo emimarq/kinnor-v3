@@ -11,7 +11,7 @@ export function renderLanding() {
     app.innerHTML = `
         <div id="landing">
             <div id="top-bar">
-                <img src="/public/images/logo/kinnor-prototype.svg" alt="Kinnor" id="landing-logo" style="height: clamp(20px, 5vw, 50px); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" />
+                <img src="/public/images/logo/kinnor-prototype.svg" alt="Kinnor" id="landing-logo" style="height: clamp(40px, 5vw, 70px); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" />
             </div>
 
             <div id="landing-tagline-area">
