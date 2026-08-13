@@ -2,66 +2,66 @@ export const prompts = [
     {
         piano: true,
         prompt: "Find and press the D key.",
-        targetNotes: ["D"],
+        targetNotes: ["D4"],
     },
     {
         piano: true,
         prompt: "Find and press the G key.",
-        targetNotes: ["G"],
+        targetNotes: ["G4"],
     },
     {
         piano: true,
         prompt: "Find and press the A key.",
-        targetNotes: ["A"],
+        targetNotes: ["A4"],
     },
     {
         piano: true,
         prompt: "Find and press the Three Black Key group.",
-        targetNotes: ["F#", "G#", "A#"],
+        targetNotes: ["F#4", "G#4", "A#4"],
     },
     {
         piano: true,
         prompt: "Find and press the F key.",
-        targetNotes: ["F"],
+        targetNotes: ["F4"],
     },
     {
         piano: true,
         prompt: "Find and press the Three Black Key group.",
-        targetNotes: ["F#", "G#", "A#"],
+        targetNotes: ["F#4", "G#4", "A#4"],
     },
     {
         piano: true,
         prompt: "Find and press the B key.",
-        targetNotes: ["B"],
+        targetNotes: ["B4"],
     },
     {
         piano: true,
         prompt: "Find and press the Three Black Key group.",
-        targetNotes: ["F#", "G#", "A#"],
+        targetNotes: ["F#4", "G#4", "A#4"],
     },
     {
         piano: true,
         prompt: "Find and press the F key.",
-        targetNotes: ["F"],
+        targetNotes: ["F4"],
     },
     {
         piano: true,
         prompt: "Find and press the Three Black Key group.",
-        targetNotes: ["F#", "G#", "A#"],
+        targetNotes: ["F#4", "G#4", "A#4"],
     },
     {
         piano: true,
         prompt: "Find and press the B key.",
-        targetNotes: ["B"],
+        targetNotes: ["B4"],
     },
     {
         piano: true,
         prompt: "Find and press the F key.",
-        targetNotes: ["F"],
+        targetNotes: ["F4"],
     },
     {
         piano: true,
         prompt: "Find and press the B key.",
-        targetNotes: ["B"],
+        targetNotes: ["B4"],
     }
-]
+];

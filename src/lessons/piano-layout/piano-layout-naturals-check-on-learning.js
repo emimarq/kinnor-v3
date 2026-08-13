@@ -2,85 +2,85 @@ export const prompts = [
     {
         piano: true,
         prompt: "Find and press the D key.",
-        targetNotes: ["D"],
+        targetNotes: ["D4"],
         noteLabels: false
     },
     {
         piano: true,
         prompt: "Find and press the C key.",
-        targetNotes: ["C"],
+        targetNotes: ["C4"],
         noteLabels: false
     },
     {
         piano: true,
         prompt: "Find and press the E key.",
-        targetNotes: ["E"],
+        targetNotes: ["E4"],
         noteLabels: false
     },
     {
         piano: true,
         prompt: "Find and press the G key.",
-        targetNotes: ["G"],
+        targetNotes: ["G4"],
         noteLabels: false
     },
     {
         piano: true,
         prompt: "Find and press the A key.",
-        targetNotes: ["A"],
+        targetNotes: ["A4"],
         noteLabels: false
     },
     {
         piano: true,
         prompt: "Find and press the F key.",
-        targetNotes: ["F"],
+        targetNotes: ["F4"],
         noteLabels: false
     },
     {
         piano: true,
         prompt: "Find and press the B key.",
-        targetNotes: ["B"],
+        targetNotes: ["B4"],
         noteLabels: false
     },
     {
         piano: true,
         prompt: "Find and press the D key.",
-        targetNotes: ["D"],
+        targetNotes: ["D4"],
         noteLabels: false
     },
     {
         piano: true,
         prompt: "Find and press the F key.",
-        targetNotes: ["F"],
+        targetNotes: ["F4"],
         noteLabels: false
     },
     {
         piano: true,
         prompt: "Find and press the A key.",
-        targetNotes: ["A"],
+        targetNotes: ["A4"],
         noteLabels: false
     },
     {
         piano: true,
         prompt: "Find and press the C key.",
-        targetNotes: ["C"],
+        targetNotes: ["C4"],
         noteLabels: false
     },
     {
         piano: true,
         prompt: "Find and press the B key.",
-        targetNotes: ["B"],
+        targetNotes: ["B4"],
         noteLabels: false
     },
     {
         piano: true,
         prompt: "Find and press the E key.",
-        targetNotes: ["E"],
+        targetNotes: ["E4"],
         noteLabels: false
     },
     {
         piano: true,
         prompt: "Find and press the G key.",
-        targetNotes: ["G"],
+        targetNotes: ["G4"],
         noteLabels: false
     }
-]
+];

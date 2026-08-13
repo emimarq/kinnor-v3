@@ -2,38 +2,38 @@ export const prompts = [
     {
         piano: true,
         prompt: "Find and press the Two Black Key group.",
-        targetNotes: ["C#", "D#"],
-        noteHints: ["C#", "D#"]
+        targetNotes: ["C#4", "D#4"],
+        noteHints: ["C#4", "D#4"]
     },
     {
         piano: true,
         prompt: "Find and press the Three Black Key group.",
-        targetNotes: ["F#", "G#", "A#"],
-        noteHints: ["F#", "G#", "A#"]
+        targetNotes: ["F#4", "G#4", "A#4"],
+        noteHints: ["F#4", "G#4", "A#4"]
     },
     {
         piano: true,
         prompt: "Find and press the Two Black Key group.",
-        targetNotes: ["C#", "D#"],
-        noteHints: ["C#", "D#"]
+        targetNotes: ["C#4", "D#4"],
+        noteHints: ["C#4", "D#4"]
     },
     {
         piano: true,
         prompt: "Find and press the D key.",
-        targetNotes: ["D"],
-        noteHints: ["D"]
+        targetNotes: ["D4"],
+        noteHints: ["D4"]
     },
     {
         piano: true,
         prompt: "Find and press the Two Black Key group.",
-        targetNotes: ["C#", "D#"],
-        noteHints: ["C#", "D#"]
+        targetNotes: ["C#4", "D#4"],
+        noteHints: ["C#4", "D#4"]
     },
     {
         piano: true,
         prompt: "Find and press the D key.",
-        targetNotes: ["D"],
-        noteHints: ["D"]
+        targetNotes: ["D4"],
+        noteHints: ["D4"]
     },
 ];
 
