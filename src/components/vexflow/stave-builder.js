@@ -1,41 +1,51 @@
-// src/components/stave/staveBuilder.js
-import Vex from 'vexflow';
+export function vexflow(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
 
-export function renderStave(targetId, options = {}) {
-  const container = document.getElementById(targetId);
-  if (!container) return;
+    container.innerHTML = "";
 
-  // Clear existing content in the container
-  container.innerHTML = '';
+    const width = container.clientWidth || 310;
+    const height = 120;
 
-  const {
-    notes = 'C4/q, D4, E4, F4',
-    clef = 'treble',
-    timeSig = '4/4',
-    width = 400,
-    height = 150
-  } = options;
+    const { Renderer, Stave, StaveNote, Voice, Formatter, Accidental, Beam } = Vex.Flow;
 
-  // Initialize VexFlow Factory attached to target element
-  const vf = new Vex.Flow.Factory({
-    renderer: {
-      elementId: targetId,
-      width: width,
-      height: height
-    }
-  });
+    const renderer = new Renderer(container, Renderer.Backends.SVG);
+    renderer.resize(width, height);
 
-  const score = vf.EasyScore();
-  const system = vf.System();
+    const context = renderer.getContext();
 
-  // Create staff, add clef, time signature, and notes
-  system
-    .addStave({
-      voices: [score.voice(score.notes(notes))]
-    })
-    .addClef(clef)
-    .addTimeSignature(timeSig);
+    // Transparent background - CSS handles container styling
+    context.rect(0, 0, width, height, {
+        fill: "transparent"
+    });
 
-  // Format and draw
-  vf.draw();
+    // Stave position
+    const stavePadding = 5;
+    const staveWidth = width - (stavePadding * 2);
+    const stave = new Stave(stavePadding, 5, staveWidth);
+
+    stave.addClef("treble").addTimeSignature("4/4");
+    stave.setContext(context).draw();
+
+    // Notes
+    const note1 = new StaveNote({ keys: ["c/4"], duration: "8", clef: "treble" });
+    const note2 = new StaveNote({ keys: ["e/4"], duration: "8", clef: "treble" });
+    const note3 = new StaveNote({ keys: ["g#/4"], duration: "q", clef: "treble" });
+    
+    const sharpAccidental = new Accidental("#");
+    note3.addAccidental(0, sharpAccidental);
+
+    const note4 = new StaveNote({ keys: ["c/5"], duration: "h", clef: "treble" });
+
+    const beam = new Beam([note1, note2]);
+    const notes = [note1, note2, note3, note4];
+
+    const voice = new Voice({ num_beats: 4, beat_value: 4 });
+    voice.addTickables(notes);
+
+    const availableWidth = staveWidth - stave.getNoteStartX() + stavePadding;
+    new Formatter().joinVoices([voice]).format([voice], availableWidth);
+
+    voice.draw(context, stave);
+    beam.setContext(context).draw();
 }

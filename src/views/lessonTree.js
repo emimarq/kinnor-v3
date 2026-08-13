@@ -9,7 +9,7 @@ export function renderLessonTree() {
     const app = document.getElementById("app");
 
     let currentUnitIndex = 0;
-    let currentTopicIndex = 2;
+    let currentTopicIndex = 1;
     let currentLessonIndex = 0;
 
     const currentUnit = lessonRegistry[currentUnitIndex];
@@ -56,7 +56,7 @@ export function renderLessonTree() {
     for (let i = 0; i < currentUnit.lessons[currentTopic].length; i++) {
         const lesson_item = document.createElement("div");
         let p = pos[i % pos.length];
-        lesson_item.className = `lesson-item ${p} `;
+        lesson_item.className = `lesson-item ${p} lesson-uncompleted`;
         lesson_item.dataset.data = i + 0;
 
         lessonsContainer.appendChild(lesson_item);

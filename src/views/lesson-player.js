@@ -1,8 +1,9 @@
 import "../styles/lesson-player.css"
 import { buildPiano } from "../components/piano/pianoBuilder.js";
 import { renderLessonTree } from "./lessonTree.js";
-import { playRhythm } from "../components/rhythm/rhythm-builder.js";
+//import { playRhythm } from "../components/rhythm/rhythm-builder.js";
 import { renderXpScreen } from "./xp-screen.js";
+import { vexflow } from "../components/vexflow/stave-builder.js";
 
 // Load all lesson modules in subdirectories lazily
 const lessonModules = import.meta.glob('../lessons/**/*.js');
@@ -97,12 +98,11 @@ export async function renderLessonPlayer(lesson) {
         const currentPrompt = prompts[currentIndex];
 
         // Conditionals to display or hide certain components on the page
+        // PIANO
         if (prompts[currentIndex].piano) {
             piano.style.display = "block";
-            rhythm.style.display = "none";
-            stave.style.display = "none"
 
-            // Adds note hint flash
+            // Add note hint flash
             if (currentPrompt.noteHints && Array.isArray(currentPrompt.noteHints)) {
                 currentPrompt.noteHints.forEach((note) => {
                     const keyBtn = piano.querySelector(`button[data-note="${note}"]`);
@@ -119,13 +119,18 @@ export async function renderLessonPlayer(lesson) {
             } else {
                 piano.classList.remove("hide-note-labels");
             }
-        } else if (prompts[currentIndex].rhythm) {
-            piano.style.display = "none";
+        }
+        // RHYTHM
+        if (currentPrompt.rhythm) {
             rhythm.style.display = "flex";
-            const currentTempo = prompts[currentIndex].tempo;
-            const currentTimeSig = prompts[currentIndex].timeSig || "4/4";
-            // Capture returned cleanup function with timeSig passed through
-            stopRhythmFn = playRhythm("lesson-player-rhythm-area", currentTempo, currentTimeSig);
+
+            //playRhythm("lesson-player-rhythm-area");
+        }
+        // STAVE
+        if (currentPrompt.stave) {
+            stave.style.display = "block";
+
+            vexflow("lesson-player-stave-area");
         }
 
         area.innerHTML = `

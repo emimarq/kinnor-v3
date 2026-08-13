@@ -32,19 +32,23 @@ export const lessonRegistry = [
       "Musical Distance": [
         {
           lessonTitle: "Half Steps",
-          lessonSummary: "Understand the smallest movement between keys on the piano."
+          lessonSummary: "Understand the smallest movement between keys on the piano.",
+          lessonId: "musical-distance/half-steps"
         },
         {
           lessonTitle: "Whole Steps",
-          lessonSummary: "Learn how to move by skipping just one key."
+          lessonSummary: "Learn how to move by skipping just one key.",
+          lessonId: "musical-distance/whole-steps"
         },
         {
           lessonTitle: "Octaves",
-          lessonSummary: "Learn how notes repeat across the piano and practice big jumps."
+          lessonSummary: "Learn how notes repeat across the piano and practice big jumps.",
+          lessonId: "musical-distance/octaves"
         },
         {
           lessonTitle: "Check on learning",
-          lessonSummary: "Solo time. Just you, the keys, and what you remember."
+          lessonSummary: "Solo time! Just you, the keys, and what you remember.",
+          lessonId: "musical-distance/musical-distance-check-on-learning"
         }
       ],
       "Piano Layout: Accidentals": [

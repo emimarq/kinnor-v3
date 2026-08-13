@@ -58,5 +58,5 @@ export const prompts = [
         prompt: "Press A♭",
         targetNotes: ["G#"],
         noteLabels: false
-    },
+    }
 ]

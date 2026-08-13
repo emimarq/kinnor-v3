@@ -83,13 +83,13 @@ button {
 
 @keyframes whiteFlash {
 	0% {
-		background: #d0d0d0;
+		background: #b7b7b7;
 	}
 	50% {
 		background: var(--bg-white);
 	}
 	100% {
-		background-color: #d0d0d0;
+		background-color: #b7b7b7;
 	}
 }
 
