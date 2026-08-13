@@ -76,6 +76,8 @@ export async function renderLessonPlayer(lesson) {
     // Exit btn logic
     const exitBtn = document.getElementById("lesson-player-exit-btn");
     exitBtn.addEventListener("click", () => {
+        confirm("Are you sure? All progress and XP earned will not be stored.");
+        
         // Clean up active rhythm beeps BEFORE exit
         beepsKillswitch();
 
