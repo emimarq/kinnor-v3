@@ -21,7 +21,7 @@ button {
 .piano-wrapper {
 	display: flex;
 	background-color: var(--bg-dark);
-	padding: 1rem;
+	padding: 0.25rem;
 	width: 100%;
 	aspect-ratio: 2 / 0.85;
 	min-height: 150px;
@@ -115,4 +115,73 @@ button {
 
 .hide-note-labels .white-key span {
 	display: none;
+}
+
+.octave-btn {
+	background-color: red;
+	border-radius: 12px;
+}
+
+/* ------------ */
+/* /src/styles/piano.css */
+
+#wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	gap: 0.50rem;
+}
+
+#prompt-box {
+	font-family: var(--font-main, sans-serif);
+	font-size: clamp(1.1rem, 3vw, 1.3rem);
+	font-weight: 800;
+	color: #ffffff;
+	text-align: center;
+	margin: 0;
+}
+
+#octave-control-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: 0.5rem 0.75rem;
+	background: rgba(255, 255, 255, 0.03);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 16px;
+	box-sizing: border-box;
+}
+
+#octave-display {
+	font-family: var(--font-main, sans-serif);
+	font-size: 0.85rem;
+	font-weight: 800;
+	color: #ffffff;
+	letter-spacing: 0.05em;
+}
+
+.octave-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	background: linear-gradient(135deg, #8a2be2 0%, #4b0082 100%);
+	color: #ffffff;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 10px;
+	cursor: pointer;
+	box-shadow: 0 4px 12px rgba(138, 43, 226, 0.3);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.octave-btn:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 6px 16px rgba(138, 43, 226, 0.5);
+}
+
+.octave-btn:active {
+	transform: translateY(1px) scale(0.96);
 }

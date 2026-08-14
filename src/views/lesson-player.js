@@ -77,7 +77,7 @@ export async function renderLessonPlayer(lesson) {
     const exitBtn = document.getElementById("lesson-player-exit-btn");
     exitBtn.addEventListener("click", () => {
         confirm("Are you sure? All progress and XP earned will not be stored.");
-        
+
         // Clean up active rhythm beeps BEFORE exit
         beepsKillswitch();
 
@@ -102,7 +102,7 @@ export async function renderLessonPlayer(lesson) {
         // Conditionals to display or hide certain components on the page
         // PIANO
         if (prompts[currentIndex].piano) {
-            piano.style.display = "block";
+            piano.style.display = "flex";
 
             // Add note hint flash
             if (currentPrompt.noteHints && Array.isArray(currentPrompt.noteHints)) {
@@ -196,12 +196,9 @@ export async function renderLessonPlayer(lesson) {
             }
         } else {
             keyBtn.classList.add("incorrect");
-            prompts.push(currentPrompt);
             userInputs.clear();
             setTimeout(() => {
                 resetKeys();
-                currentIndex++;
-                updateProgressBar();
                 renderPrompt();
             }, 250)
         }

@@ -30,12 +30,11 @@ export function buildPiano(targetId, currentOctave = 4) {
     const octaveBar = document.createElement("div");
     octaveBar.id = "octave-control-bar";
     octaveBar.innerHTML = `
-        <button class="octave-btn" id="octave-down">◀ Octave</button>
+        <button class="octave-btn fa-solid fa-angle-left" id="octave-down"></button>
         <span id="octave-display">OCTAVE ${currentOctave}</span>
-        <button class="octave-btn" id="octave-up">Octave ▶</button>
+        <button class="octave-btn fa-solid fa-angle-right" id="octave-up"></button>
     `;
 
-    // 2. Attach Listeners directly to octaveBar buttons
     octaveBar.querySelector("#octave-down").addEventListener("click", () => {
         if (currentOctave > 1) {
             currentOctave--;
@@ -50,10 +49,10 @@ export function buildPiano(targetId, currentOctave = 4) {
         }
     });
 
-    // 3. Put octaveBar inside wrapper
     wrapper.appendChild(octaveBar);
 
     naturals.forEach((note, index) => {
+
         // Render white keys
         const whiteKey = document.createElement("button");
         whiteKey.classList.add("white-key");

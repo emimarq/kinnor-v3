@@ -56,7 +56,14 @@
 
 /* PIANO AREA CONTAINER */
 #lesson-player-piano-area {
+    background-color: var(--bg-main);
     display: none;
+    padding: 1rem 0.85rem 1.5rem;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(138, 43, 226, 0.3);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
 }
 
 /* RHYTHM AREA */
