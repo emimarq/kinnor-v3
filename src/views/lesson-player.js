@@ -116,10 +116,15 @@ export async function renderLessonPlayer(lesson) {
 
             // Note label behavior
             // Reset all note labels to visible by default first
-            if (currentPrompt.noteLabels === false) {
-                piano.classList.add("hide-note-labels");
-            } else {
+            if (currentPrompt.noteLabels === true) {
                 piano.classList.remove("hide-note-labels");
+            } else {
+                piano.classList.add("hide-note-labels");
+            }
+
+            // Octave control bar
+            if (prompts[currentIndex].octaves) {
+                document.querySelector("#octave-control-bar").style.display = "flex";
             }
         }
         // RHYTHM
