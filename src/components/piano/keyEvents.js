@@ -13,7 +13,6 @@ export function keyEvents() {
             if (isActive) return;
             selectedNote.push(e.target.closest("button").dataset.note);
             key.classList.add("active");
-            console.log(key.dataset.note);
         })
 
         key.addEventListener("pointerup", (e) => {

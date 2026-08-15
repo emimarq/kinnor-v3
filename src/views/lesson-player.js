@@ -20,6 +20,7 @@ export async function renderLessonPlayer(lesson) {
     const prompts = structuredClone(lessonData.prompts);
 
     const app = document.getElementById("app");
+    app.scrollTop;
 
     let currentIndex = 0;
     let stopRhythmFn = null;
@@ -124,7 +125,9 @@ export async function renderLessonPlayer(lesson) {
 
             // Octave control bar
             if (prompts[currentIndex].octaves) {
-                document.querySelector("#octave-control-bar").style.display = "flex";
+                piano.querySelector("#octave-control-bar").style.display = "flex";
+            } else {
+                piano.querySelector("#octave-control-bar").style.display = "none";
             }
         }
         // RHYTHM
@@ -145,16 +148,23 @@ export async function renderLessonPlayer(lesson) {
         `;
     }
 
-    // Track the users selected notes
+    // Track the user's selected notes
     let userInputs = new Set();
 
-    // Keep correct class while cycling octaves
+    // Keep correct classes while cycling octaves
     document.getElementById("lesson-player-piano-area").addEventListener("octaveChanged", () => {
+        const currentPrompt = prompts[currentIndex];
+
         document.querySelectorAll(".piano-wrapper button").forEach((keyBtn) => {
             if (userInputs.has(keyBtn.dataset.note)) {
                 keyBtn.classList.add("correct");
             } else {
                 keyBtn.classList.remove("correct");
+            }
+            if (currentPrompt?.noteHints?.includes(keyBtn.dataset.note)) {
+                keyBtn.classList.add("flashing");
+            } else {
+                keyBtn.classList.remove("flashing");
             }
         });
     });
