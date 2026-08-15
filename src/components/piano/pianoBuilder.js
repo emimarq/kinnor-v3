@@ -5,8 +5,7 @@ import { keyEvents } from "./keyEvents.js";
 
 export function buildPiano(targetId, currentOctave = 4) {
 
-    const container = document.getElementById(targetId);
-    container.innerHTML = '';
+    const app = document.getElementById(targetId);
 
     const naturals = ["C", "D", "E", "F", "G", "A", "B"];
 
@@ -21,54 +20,60 @@ export function buildPiano(targetId, currentOctave = 4) {
     const wrapper = document.createElement("div");
     wrapper.id = "wrapper";
 
-    const promptBox = document.createElement("h1");
-    promptBox.id = "prompt-box";
+    //const promptBox = document.createElement("h1");
+    //promptBox.id = "prompt-box";
 
     const pianoWrapper = document.createElement("div");
     pianoWrapper.classList.add("piano-wrapper");
 
-    const octaveBar = document.createElement("div");
-    octaveBar.id = "octave-control-bar";
-    octaveBar.innerHTML = `
+    const octaveControlBar = document.createElement("div");
+    octaveControlBar.id = "octave-control-bar";
+    octaveControlBar.innerHTML = `
         <button class="octave-btn fa-solid fa-angle-left" id="octave-down"></button>
-        <span id="octave-display">OCTAVE ${currentOctave}</span>
+        <div id="octave-display">OCTAVE ${currentOctave}</div>
         <button class="octave-btn fa-solid fa-angle-right" id="octave-up"></button>
-    `;
+    `
 
-    octaveBar.querySelector("#octave-down").addEventListener("click", () => {
-        if (currentOctave > 1) {
-            currentOctave--;
-            buildPiano(targetId, currentOctave);
-        }
-    });
+    function updateKeys(newOctave) {
+        const keys = pianoWrapper.querySelectorAll(".piano-key");
+        keys.forEach((key) => {
+            key.dataset.note = `${key.dataset.baseNote}${newOctave}`;
+        })
+    }
 
-    octaveBar.querySelector("#octave-up").addEventListener("click", () => {
-        if (currentOctave < 7) {
-            currentOctave++;
-            buildPiano(targetId, currentOctave);
-        }
-    });
-
-    wrapper.appendChild(octaveBar);
+    const btns = octaveControlBar.querySelectorAll(".octave-btn");
+    btns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            let octaveChanged = false;
+            if (btn.id.includes("octave-down") && currentOctave > 1) {
+                currentOctave--;
+                octaveChanged = true;
+            } else if (btn.id.includes("octave-up") && currentOctave < 7) {
+                currentOctave++;
+                octaveChanged = true;
+            }
+            if (octaveChanged) {
+                octaveControlBar.querySelector("#octave-display").textContent = `OCTAVE ${currentOctave}`;
+                updateKeys(currentOctave);
+                app.dispatchEvent(new CustomEvent("octaveChanged"));
+            }
+        })
+    })
 
     naturals.forEach((note, index) => {
-
-        // Render white keys
         const whiteKey = document.createElement("button");
-        whiteKey.classList.add("white-key");
-        whiteKey.classList.add("piano-key");
+        whiteKey.classList.add("white-key", "piano-key");
+        whiteKey.dataset.baseNote = note;
         whiteKey.dataset.note = `${note}${currentOctave}`;
 
-        // Render note labels for white keys
         const noteLabel = document.createElement("span");
         noteLabel.innerText = note;
         whiteKey.appendChild(noteLabel);
 
-        // Render black keys
         if (accidentals[note]) {
             const blackKey = document.createElement("button");
-            blackKey.classList.add("black-key");
-            blackKey.classList.add("piano-key");
+            blackKey.classList.add("black-key", "piano-key");
+            blackKey.dataset.baseNote = accidentals[note];
             blackKey.dataset.note = `${accidentals[note]}${currentOctave}`;
 
             whiteKey.appendChild(blackKey);
@@ -78,10 +83,9 @@ export function buildPiano(targetId, currentOctave = 4) {
         //if (index >= 3) { whiteKey.remove(); pianoWrapper.style.aspectRatio = "5/1" }
     });
 
-    wrapper.appendChild(promptBox);
+    wrapper.appendChild(octaveControlBar);
+    //wrapper.appendChild(promptBox);
     wrapper.appendChild(pianoWrapper);
-
-    container.appendChild(wrapper);
-
+    app.appendChild(wrapper);
     return keyEvents();
 }

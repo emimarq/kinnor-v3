@@ -52,7 +52,6 @@ const facts = [
     "Art Tatum was legally blind but could play lightning-fast runs and complex chords most pianists wouldn’t even attempt.",
     "Chet Baker didn’t read music fluently — he learned most of his solos by ear and instinct.",
     "Dizzy Gillespie’s signature bent trumpet came from an accident, but he loved how it changed the sound and stuck with it forever.",
-    "Sun Ra said he wasn’t just playing music — he was channeling sound from the cosmos to bring harmony to Earth.",
     "Oscar Peterson was so fast and clean on piano that even classical pianists studied his fingering for technique tips.",
     "Stan Getz learned to play tenor saxophone by copying entire solos off records — by ear, no sheet music involved.",
     "Pat Metheny used to practice 12 hours a day, saying, 'You can’t fake good tone — you have to live with it.'",

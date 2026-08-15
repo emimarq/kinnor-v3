@@ -12,7 +12,6 @@ renderLessonTree();
 //renderCourseMap();
 //renderXpScreen();
 
-
 //srenderTesting();
 //renderTesting_responsive();
 //

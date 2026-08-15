@@ -148,6 +148,17 @@ export async function renderLessonPlayer(lesson) {
     // Track the users selected notes
     let userInputs = new Set();
 
+    // Keep correct class while cycling octaves
+    document.getElementById("lesson-player-piano-area").addEventListener("octaveChanged", () => {
+        document.querySelectorAll(".piano-wrapper button").forEach((keyBtn) => {
+            if (userInputs.has(keyBtn.dataset.note)) {
+                keyBtn.classList.add("correct");
+            } else {
+                keyBtn.classList.remove("correct");
+            }
+        });
+    });
+
     // Set guard to prevent spam clicks
     let isActive = null;
 

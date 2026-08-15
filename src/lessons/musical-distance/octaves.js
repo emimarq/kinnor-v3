@@ -2,8 +2,8 @@ export const prompts = [
     {
         piano: true,
         octaves: true,
-        prompt: "Press C4.",
-        targetNotes: ["C4"],
+        prompt: "Play an F Major Scale.",
+        targetNotes: ["F4", "G4", "A4", "A#4", "C5", "D5", "E5", "F5"]
     },
     {
         piano: true,
