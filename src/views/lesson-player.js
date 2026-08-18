@@ -22,6 +22,17 @@ export async function renderLessonPlayer(lesson) {
     const app = document.getElementById("app");
     app.scrollTop;
 
+    let completionAudio = null;
+
+    // Load the lesson complete SFX
+    function playCompletionSFX() {
+        if (!completionAudio) {
+            completionAudio = new Audio('/audio/sfx/lessonCompleted.mp3');
+        }
+        completionAudio.currentTime = 0;
+        completionAudio.play().catch(err => console.error("Playback error:", err));
+    }
+
     let currentIndex = 0;
     let stopRhythmFn = null;
 
@@ -209,6 +220,9 @@ export async function renderLessonPlayer(lesson) {
 
                         // Clear all rhythm beeps BEFORE progressing
                         beepsKillswitch();
+                        setTimeout(() => {
+                            playCompletionSFX();
+                        }, 550)
 
                         setTimeout(() => {
                             renderXpScreen();

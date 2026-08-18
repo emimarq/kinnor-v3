@@ -9,7 +9,7 @@ export function renderLessonTree() {
     const app = document.getElementById("app");
 
     let currentUnitIndex = 0;
-    let currentTopicIndex = 3;
+    let currentTopicIndex = 1;
     let currentLessonIndex = 0;
 
     const currentUnit = lessonRegistry[currentUnitIndex];
