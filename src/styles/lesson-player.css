@@ -45,13 +45,19 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-#lesson-player-stave-area svg path {
-    fill: #ccc !important;
-    stroke: #ccc !important;
+#lesson-player-stave-area .abcjs-staff path {
+    fill: #cccccc;
+    stroke: #cccccc;
 }
 
-#lesson-player-stave-area svg path.vf-stavepath {
-    stroke: rgba(255, 255, 255, 0.4) !important;
+#lesson-player-stave-area .abcjs-note {
+    fill: #cccccc;
+    stroke: #cccccc;
+}
+
+#lesson-player-stave-area .abcjs-clef {
+    fill: #cccccc;
+    stroke: #cccccc;
 }
 
 /* PIANO AREA CONTAINER */

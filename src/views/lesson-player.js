@@ -3,7 +3,7 @@ import { buildPiano } from "../components/piano/pianoBuilder.js";
 import { renderLessonTree } from "./lessonTree.js";
 //import { playRhythm } from "../components/rhythm/rhythm-builder.js";
 import { renderXpScreen } from "./xp-screen.js";
-import { vexflow } from "../components/vexflow/stave-builder.js";
+import { renderStave } from "../components/vexflow/stave-builder.js";
 
 // Load all lesson modules in subdirectories lazily
 const lessonModules = import.meta.glob('../lessons/**/*.js');
@@ -140,7 +140,7 @@ export async function renderLessonPlayer(lesson) {
         if (currentPrompt.stave) {
             stave.style.display = "block";
 
-            vexflow("lesson-player-stave-area");
+            renderStave("lesson-player-stave-area");
         }
 
         area.innerHTML = `

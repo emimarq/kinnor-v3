@@ -73,44 +73,11 @@ export const lessonRegistry = [
           lessonId: "piano-layout/piano-layout-accidentals-check-on-learning"
         }
       ],
-      "Rhythm & Meter": [
-        {
-          lessonTitle: "The Pulse and Time Signatures",
-          lessonSummary: "Learn how beats are grouped using 4/4 and 3/4 time."
-        },
-        {
-          lessonTitle: "Whole Notes",
-          lessonSummary: "A note that lasts four beats—long, steady, and unbroken."
-        },
-        {
-          lessonTitle: "Half Notes",
-          lessonSummary: "Held for two beats—balanced between motion and pause."
-        },
-        {
-          lessonTitle: "Quarter Notes",
-          lessonSummary: "One beat each—driving the rhythm forward step by step."
-        },
-        {
-          lessonTitle: "Eighth Notes",
-          lessonSummary: "Quick and light—two notes fit into every beat."
-        },
-        {
-          lessonTitle: "Sixteenth Notes",
-          lessonSummary: "Four evenly spaced notes within one beat—tight and rhythmic."
-        },
-        {
-          lessonTitle: "Understanding Rests",
-          lessonSummary: "Learn how silent beats balance notes in rhythmic notation."
-        },
-        {
-          lessonTitle: "Check on learning",
-          lessonSummary: "Solo time. Just you, the keys, and what you remember."
-        }
-      ],
-      "Staff Reading": [
+      "Elements of Notation": [
         {
           lessonTitle: "Discover the Treble Clef",
-          lessonSummary: "See how the treble clef gives the staff meaning—and learn which line it wraps around."
+          lessonSummary: "See how the treble clef gives the staff meaning—and learn which line it wraps around.",
+          lessonId: "elements-of-notation/discover-the-treble-clef"
         },
         {
           lessonTitle: "Using G as Your Guide",
@@ -139,6 +106,40 @@ export const lessonRegistry = [
         {
           lessonTitle: "Climbing Higher: Reading Past the Top Line",
           lessonSummary: "Some notes go even higher than the staff. Ledger lines help us reach them."
+        },
+        {
+          lessonTitle: "Check on learning",
+          lessonSummary: "Solo time. Just you, the keys, and what you remember."
+        }
+      ],
+      "Rhythm & Meter": [
+        {
+          lessonTitle: "The Pulse and Time Signatures",
+          lessonSummary: "Learn how beats are grouped using 4/4 and 3/4 time."
+        },
+        {
+          lessonTitle: "Whole Notes",
+          lessonSummary: "A note that lasts four beats—long, steady, and unbroken."
+        },
+        {
+          lessonTitle: "Half Notes",
+          lessonSummary: "Held for two beats—balanced between motion and pause."
+        },
+        {
+          lessonTitle: "Quarter Notes",
+          lessonSummary: "One beat each—driving the rhythm forward step by step."
+        },
+        {
+          lessonTitle: "Eighth Notes",
+          lessonSummary: "Quick and light—two notes fit into every beat."
+        },
+        {
+          lessonTitle: "Sixteenth Notes",
+          lessonSummary: "Four evenly spaced notes within one beat—tight and rhythmic."
+        },
+        {
+          lessonTitle: "Understanding Rests",
+          lessonSummary: "Learn how silent beats balance notes in rhythmic notation."
         },
         {
           lessonTitle: "Check on learning",
