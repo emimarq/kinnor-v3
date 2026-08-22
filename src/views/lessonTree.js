@@ -1,4 +1,4 @@
-// src/views/lesonTree.js
+// src/views/lessonTree.js
 
 import "../styles/lessonTree.css"
 import { lessonRegistry } from "../lessons/lesson-registry";
@@ -9,7 +9,7 @@ export function renderLessonTree() {
     const app = document.getElementById("app");
 
     let currentUnitIndex = 0;
-    let currentTopicIndex = 1;
+    let currentTopicIndex = 0;
     let currentLessonIndex = 0;
 
     const currentUnit = lessonRegistry[currentUnitIndex];
@@ -63,6 +63,11 @@ export function renderLessonTree() {
 
         const lesson_item_icon = document.createElement("div");
         lesson_item_icon.className = "lesson-item-icon fa-solid fa-play";
+
+        if (currentUnit.lessons[currentTopic][i].lessonTitle === "Check on learning") {
+            lesson_item_icon.classList.remove("fa-play");
+            lesson_item_icon.classList.add("fa-star");
+        }
 
         lesson_item.appendChild(lesson_item_icon);
     }

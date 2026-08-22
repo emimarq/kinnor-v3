@@ -19,6 +19,7 @@ export async function renderLessonPlayer(lesson) {
     // Insures lesson is a fresh start
     const prompts = structuredClone(lessonData.prompts);
 
+    window.scrollTo(0);
     const app = document.getElementById("app");
     app.scrollTop;
 

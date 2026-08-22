@@ -20,9 +20,6 @@ export function buildPiano(targetId, currentOctave = 4) {
     const wrapper = document.createElement("div");
     wrapper.id = "wrapper";
 
-    //const promptBox = document.createElement("h1");
-    //promptBox.id = "prompt-box";
-
     const pianoWrapper = document.createElement("div");
     pianoWrapper.classList.add("piano-wrapper");
 
@@ -84,7 +81,6 @@ export function buildPiano(targetId, currentOctave = 4) {
     });
 
     wrapper.appendChild(octaveControlBar);
-    //wrapper.appendChild(promptBox);
     wrapper.appendChild(pianoWrapper);
     app.appendChild(wrapper);
     return keyEvents();
