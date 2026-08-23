@@ -3,7 +3,7 @@ import { buildPiano } from "../components/piano/pianoBuilder.js";
 import { renderLessonTree } from "./lessonTree.js";
 //import { playRhythm } from "../components/rhythm/rhythm-builder.js";
 import { renderXpScreen } from "./xp-screen.js";
-import { renderStave } from "../components/vexflow/stave-builder.js";
+import { renderStave } from "../components/abc-notation/stave-builder.js";
 
 // Load all lesson modules in subdirectories lazily
 const lessonModules = import.meta.glob('../lessons/**/*.js');
@@ -19,7 +19,6 @@ export async function renderLessonPlayer(lesson) {
     // Insures lesson is a fresh start
     const prompts = structuredClone(lessonData.prompts);
 
-    window.scrollTo(0);
     const app = document.getElementById("app");
     app.scrollTop;
 
@@ -46,11 +45,12 @@ export async function renderLessonPlayer(lesson) {
                 </div>
             </div>
 
-            <div id="lesson-player-stave-area"></div>
+                <div id="lesson-player-stave-area"></div>
+
 
             <div id="lesson-player-rhythm-area"></div>
 
-            <div id="lesson-player-piano-area"></div>
+                <div id="lesson-player-piano-area"></div>
 
             <div id="lesson-player-prompt-area">
                 <p id="lesson-player-prompt-text"></p>
@@ -152,7 +152,9 @@ export async function renderLessonPlayer(lesson) {
         if (currentPrompt.stave) {
             stave.style.display = "block";
 
-            renderStave("lesson-player-stave-area");
+            renderStave("lesson-player-stave-area", currentPrompt.notation, {
+                highlightLines: currentPrompt.highlightLines
+            });
         }
 
         area.innerHTML = `

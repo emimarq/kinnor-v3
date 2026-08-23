@@ -6,22 +6,22 @@ export const prompts = [
     },
     {
         piano: true,
-        prompt: "Find the key 1 whole step up from D",
+        prompt: "Press the key 1 whole step up from D",
         targetNotes: ["E4"],
     },
     {
         piano: true,
-        prompt: "Find the key 1 whole step up from F",
+        prompt: "Press the key 1 whole step up from F",
         targetNotes: ["G4"],
     },
     {
         piano: true,
-        prompt: "Find the key 1 whole step up from G",
+        prompt: "Press the key 1 whole step up from G",
         targetNotes: ["A4"],
     },
     {
         piano: true,
-        prompt: "Find the key 1 whole step up from A",
+        prompt: "Press the key 1 whole step up from A",
         targetNotes: ["B4"],
     },
     {
@@ -31,27 +31,27 @@ export const prompts = [
     },
     {
         piano: true,
-        prompt: "Find the key 1 whole step down from B",
+        prompt: "Press the key 1 whole step down from B",
         targetNotes: ["A4"],
     },
     {
         piano: true,
-        prompt: "Find the key 1 whole step down from A",
+        prompt: "Press the key 1 whole step down from A",
         targetNotes: ["G4"],
     },
     {
         piano: true,
-        prompt: "Find the key 1 whole step down from G",
+        prompt: "Press the key 1 whole step down from G",
         targetNotes: ["F4"],
     },
     {
         piano: true,
-        prompt: "Find the key 1 whole step down from F",
+        prompt: "Press the key 1 whole step down from F",
         targetNotes: ["D#4"],
     },
     {
         piano: true,
-        prompt: "Find the key 1 whole step down from F#",
+        prompt: "Press the key 1 whole step down from F#",
         targetNotes: ["E4"],
     }
 ];

@@ -112,7 +112,7 @@ nav {
 
 #lessons-container {
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     margin: 0 auto;
     flex-direction: column;
     padding-top: 2rem;
@@ -124,7 +124,7 @@ nav {
 }
 
 .lesson-item {
-    width: clamp(100px, 15vw, 130px);
+    width: clamp(100px, 15vw, 120px);
     aspect-ratio: 1 / 1;
     border-radius: 22px;
     touch-action: manipulation;

@@ -2,37 +2,37 @@ export const prompts = [
     {
         piano: true,
         octaves: false,
-        prompt: "Find the key 1 half step up from D",
+        prompt: "Press the key 1 half step up from D",
         targetNotes: ["D#4"],
     },
     {
         piano: true,
         octaves: false,
-        prompt: "Find the key 1 half step up from G",
+        prompt: "Press the key 1 half step up from G",
         targetNotes: ["G#4"],
     },
     {
         piano: true,
         octaves: false,
-        prompt: "Find the key 1 half step up from F",
+        prompt: "Press the key 1 half step up from F",
         targetNotes: ["F#4"],
     },
     {
         piano: true,
         octaves: false,
-        prompt: "Find the key 1 whole step down from A",
+        prompt: "Press the key 1 whole step down from A",
         targetNotes: ["G4"],
     },
     {
         piano: true,
         octaves: false,
-        prompt: "Find the key 1 whole step down from G",
+        prompt: "Press the key 1 whole step down from G",
         targetNotes: ["F4"],
     },
     {
         piano: true,
         octaves: false,
-        prompt: "Find the key 1 whole step down from B",
+        prompt: "Press the key 1 whole step down from B",
         targetNotes: ["A4"],
     },
     {
