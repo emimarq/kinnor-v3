@@ -3,7 +3,7 @@ export const prompts = [
         piano: true,
         prompt: "A half step is the closest neighbor key. Press C, then press the key 1 half step up from it.",
         targetNotes: ["C4", "C#4"],
-        noteHints: ["C4", "C#4"],
+        keyHints: ["C4", "C#4"],
     },
     {
         piano: true,

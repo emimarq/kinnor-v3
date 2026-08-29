@@ -36,11 +36,12 @@ export function renderLanding() {
 
     document.querySelector(".piano-wrapper").addEventListener("click", (e) => {
         const note = e.target.closest("button")?.dataset.note;
-        if (note === "C") {
+        console.log(note);
+        if (note === "C4") {
             renderOnboarding();
         }
 
-        if (note === "E") {
+        if (note === "E4") {
             renderLogin();
         }
     });

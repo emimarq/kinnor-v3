@@ -21,12 +21,11 @@ export function renderStave(targetId, abcString, staveOptions = {}) {
     })
 
     if (staveOptions.highlightLines && Array.isArray(staveOptions.highlightLines)) {
-        staveOptions.highlightLines.forEach(({ line, color, width, height }) => {
+        staveOptions.highlightLines.forEach(({ line, color, width }) => {
             const index = line - 1;
             if (staveLines[index]) {
                 staveLines[index].style.stroke = color || "#8a2be2";
                 staveLines[index].style.strokeWidth = width || "1px";
-                staveLines[index].style.height = height || "1px";
             }
         });
     }

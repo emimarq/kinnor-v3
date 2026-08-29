@@ -38,6 +38,7 @@ export async function renderLessonPlayer(lesson) {
 
     app.innerHTML = `
         <div id="lesson-player-container">
+        <div id=lesson-player-wrapper>
             <div id="lesson-player-top-content">
                 <div id="lesson-player-exit-btn" class="fa-solid fa-x"></div>
                 <div id="lesson-player-progress-bar">
@@ -55,6 +56,7 @@ export async function renderLessonPlayer(lesson) {
             <div id="lesson-player-prompt-area">
                 <p id="lesson-player-prompt-text"></p>
             </div>
+        </div>
         </div>
     `;
 
@@ -117,9 +119,9 @@ export async function renderLessonPlayer(lesson) {
         if (prompts[currentIndex].piano) {
             piano.style.display = "flex";
 
-            // Add note hint flash
-            if (currentPrompt.noteHints && Array.isArray(currentPrompt.noteHints)) {
-                currentPrompt.noteHints.forEach((note) => {
+            // Add key flash for hints
+            if (currentPrompt.keyHints && Array.isArray(currentPrompt.keyHints)) {
+                currentPrompt.keyHints.forEach((note) => {
                     const keyBtn = piano.querySelector(`button[data-note="${note}"]`);
                     if (keyBtn) {
                         keyBtn.classList.add("flashing");
@@ -152,9 +154,19 @@ export async function renderLessonPlayer(lesson) {
         if (currentPrompt.stave) {
             stave.style.display = "block";
 
+
             renderStave("lesson-player-stave-area", currentPrompt.notation, {
                 highlightLines: currentPrompt.highlightLines
             });
+
+            if (currentPrompt.noteHints && Array.isArray(currentPrompt.noteHints)) {
+                currentPrompt.noteHints.forEach((noteIndex) => {
+                    const currentNote = stave.querySelector(`.abcjs-n${noteIndex}`);
+                    if (currentNote) {
+                        currentNote.classList.add("flashing");
+                    }
+                });
+            }
         }
 
         area.innerHTML = `
@@ -175,7 +187,7 @@ export async function renderLessonPlayer(lesson) {
             } else {
                 keyBtn.classList.remove("correct");
             }
-            if (currentPrompt?.noteHints?.includes(keyBtn.dataset.note)) {
+            if (currentPrompt?.keyHints?.includes(keyBtn.dataset.note)) {
                 keyBtn.classList.add("flashing");
             } else {
                 keyBtn.classList.remove("flashing");
@@ -197,6 +209,7 @@ export async function renderLessonPlayer(lesson) {
         if (!note) return;
 
         let currentPrompt = prompts[currentIndex];
+        let currentNote = document.querySelector(".abcjs-note");
 
         // Conditionals to pass or fail user inputs
         if (currentPrompt.targetNotes.includes(note)) {
@@ -205,6 +218,10 @@ export async function renderLessonPlayer(lesson) {
             // Set visuals for correct input
             keyBtn.classList.add("correct");
             keyBtn.classList.remove("flashing");
+
+            if (currentNote) {
+                currentNote.style.backgroundColor = "red";
+            }
 
             // Check user input for test against target notes
             if (userInputs.size === currentPrompt.targetNotes.length) {
