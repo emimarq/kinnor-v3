@@ -5,6 +5,12 @@ export const prompts = [
         targetNotes: ["D4"],
         noteLabels: true
     },
+    /* {
+        piano: true,
+        prompt: "Press the D key.",
+        targetNotes: ["D4"],
+        noteLabels: true
+    },
     {
         piano: true,
         prompt: "Press the C key.",
@@ -76,5 +82,5 @@ export const prompts = [
         prompt: "Press the A key.",
         targetNotes: ["A4"],
         noteLabels: true
-    }
+    } */
 ];

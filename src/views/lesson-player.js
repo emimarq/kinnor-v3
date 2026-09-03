@@ -11,6 +11,16 @@ const lessonModules = import.meta.glob('../lessons/**/*.js');
 export async function renderLessonPlayer(lesson) {
     const modulePath = `../lessons/${lesson.lessonId}.js`;
 
+    const getData = localStorage.getItem("completedLessons");
+    const userData = getData ? JSON.parse(getData) : {
+        userProgress: {
+            completedLessons: [],
+            currentUnitIndex: 0,
+            currentTopicIndex: 0,
+            currentLessonIndex: 0
+        }
+    };
+
     if (!lessonModules[modulePath]) {
         throw new Error(`Module not found: ${modulePath}`);
     }
@@ -38,7 +48,6 @@ export async function renderLessonPlayer(lesson) {
 
     app.innerHTML = `
         <div id="lesson-player-container">
-        <div id=lesson-player-wrapper>
             <div id="lesson-player-top-content">
                 <div id="lesson-player-exit-btn" class="fa-solid fa-x"></div>
                 <div id="lesson-player-progress-bar">
@@ -56,7 +65,6 @@ export async function renderLessonPlayer(lesson) {
             <div id="lesson-player-prompt-area">
                 <p id="lesson-player-prompt-text"></p>
             </div>
-        </div>
         </div>
     `;
 
@@ -201,6 +209,7 @@ export async function renderLessonPlayer(lesson) {
     // Game logic for user
     document.querySelector(".piano-wrapper").addEventListener("click", (e) => {
         if (isActive) return;
+
         // Store current selected note
         const keyBtn = e.target.closest("button");
 
@@ -240,6 +249,12 @@ export async function renderLessonPlayer(lesson) {
 
                         // Clear all rhythm beeps BEFORE progressing
                         beepsKillswitch();
+
+                        if (!userData.userProgress.completedLessons.includes(lesson.lessonId)) {
+                            userData.userProgress.completedLessons.push(lesson.lessonId);
+                        }
+                        localStorage.setItem("completedLessons", JSON.stringify(userData));
+
                         setTimeout(() => {
                             playCompletionSFX();
                         }, 550)
@@ -268,3 +283,25 @@ export async function renderLessonPlayer(lesson) {
     renderPrompt();
     updateProgressBar();
 }
+
+
+/* // First file
+export let j = null;
+export function main() {
+    function pass_variable() {
+        function place_holder_function() {
+            if ("some logic here") {
+                j = true;
+            }
+        }
+    }
+}
+
+// Second file
+import pass_variable from "/file/location/first-file.js"
+
+if (j) {
+    function here() {
+        console.log("worked!")
+    }
+} */

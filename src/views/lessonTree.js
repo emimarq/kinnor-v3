@@ -8,9 +8,27 @@ import { renderLessonPlayer } from "./lesson-player";
 export function renderLessonTree() {
     const app = document.getElementById("app");
 
-    let currentUnitIndex = 0;
-    let currentTopicIndex = 3;
-    let currentLessonIndex = 0;
+
+
+    const getUserData = localStorage.getItem("completedLessons");
+    const userData = getUserData ? JSON.parse(getUserData) : {
+        userProgress: {
+            completedLessons: [],
+            currentUnitIndex: 0,
+            currentTopicIndex: 0,
+            currentLessonIndex: 0,
+            xp: 0,
+            badges: {
+
+            },
+            hearts: 5,
+            streak: 0
+        }
+    };
+
+    let currentUnitIndex = userData.userProgress.currentUnitIndex;
+    let currentTopicIndex = userData.userProgress.currentTopicIndex;
+    let currentLessonIndex = userData.userProgress.currentLessonIndex;
 
     const currentUnit = lessonRegistry[currentUnitIndex];
     const topicKeys = Object.keys(currentUnit.lessons);
@@ -29,7 +47,7 @@ export function renderLessonTree() {
                 </div>
 
                 <div id="roadmap-area">
-                    <div class="fa-solid fa-bars"></div>
+                    <div class="fa-solid fa-list"></div>
                     <h4 id="roadmap-hud">${currentUnit.unitName}</h4>
                 </div>
             </nav>
@@ -53,7 +71,21 @@ export function renderLessonTree() {
 
     const pos = ["center", "left", "center", "right"];
 
-    for (let i = 0; i < currentUnit.lessons[currentTopic].length; i++) {
+    const lessonItemCount = currentUnit.lessons[currentTopic].length;
+    const completedTopicLessons = currentUnit.lessons[currentTopic].filter(l =>
+        userData.userProgress.completedLessons.includes(l.lessonId)
+    );
+    
+    // 3. Check for topic completion
+    if (completedTopicLessons.length === lessonItemCount && lessonItemCount > 0) {
+        userData.userProgress.currentTopicIndex += 1;
+        localStorage.setItem("completedLessons", JSON.stringify(userData));
+    
+        // Re-render immediately with the updated topic index and stop current execution
+        renderLessonTree();
+        return;
+    }
+    for (let i = 0; i < lessonItemCount; i++) {
         const lesson_item = document.createElement("div");
         let p = pos[i % pos.length];
         lesson_item.className = `lesson-item ${p} lesson-uncompleted`;
@@ -64,9 +96,29 @@ export function renderLessonTree() {
         const lesson_item_icon = document.createElement("div");
         lesson_item_icon.className = "lesson-item-icon fa-solid fa-play";
 
-        if (currentUnit.lessons[currentTopic][i].lessonTitle === "Check on learning") {
+
+        const lessonTitle = currentUnit.lessons[currentTopic][i].lessonTitle;
+        const currentLessonId = currentUnit.lessons[currentTopic][i].lessonId;
+        //console.log(lessonItemCount);
+        //console.log(userData.completedLessons.length);
+
+/*         if (userData.userProgress.completedLessons.length === lessonItemCount) {
+            userData.userProgress.currentTopicIndex += 1;
+            localStorage.setItem("completedLessons", JSON.stringify(userData));
+        } else {
+            console.log("Nope");
+        } */
+
+        if (lessonTitle === "Check on learning") {
             lesson_item_icon.classList.remove("fa-play");
             lesson_item_icon.classList.add("fa-star");
+        }
+
+        if (userData.userProgress.completedLessons.includes(currentLessonId)) {
+            lesson_item_icon.classList.remove("fa-play");
+            lesson_item_icon.classList.add("fa-check");
+            lesson_item.classList.remove("lesson-uncompleted");
+            lesson_item.classList.add("lesson-completed");
         }
 
         lesson_item.appendChild(lesson_item_icon);
@@ -79,7 +131,7 @@ export function renderLessonTree() {
             if (existingWindow) {
                 existingWindow.remove();
             }
-            
+
             const currentSelectedLessonIndex = e.target.closest(".lesson-item").dataset.data;
             const selectedLesson = currentUnit.lessons[currentTopic][currentSelectedLessonIndex];
 
@@ -104,6 +156,7 @@ export function renderLessonTree() {
             cancelBtn.addEventListener("click", () => {
                 lessonWindow.remove();
             });
+
 
             continueBtn.addEventListener("click", () => {
                 app.innerHTML = '';

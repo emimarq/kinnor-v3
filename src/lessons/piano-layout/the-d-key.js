@@ -1,6 +1,13 @@
 export const prompts = [
     {
         piano: true,
+        prompt: "Test C#4",
+        targetNotes: ["C#4"],
+        keyHints: ["C#4"],
+        noteLabels: true
+    },
+/*     {
+        piano: true,
         prompt: "Press the Two Black Key group.",
         targetNotes: ["C#4", "D#4"],
         keyHints: ["C#4", "D#4"],
@@ -48,7 +55,7 @@ export const prompts = [
         prompt: "Press the D key.",
         targetNotes: ["D4"],
         noteLabels: true
-    }
+    } */
 ];
 
 // Rhythm game:
