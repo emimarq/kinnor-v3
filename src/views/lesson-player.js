@@ -11,13 +11,19 @@ const lessonModules = import.meta.glob('../lessons/**/*.js');
 export async function renderLessonPlayer(lesson) {
     const modulePath = `../lessons/${lesson.lessonId}.js`;
 
-    const getData = localStorage.getItem("completedLessons");
-    const userData = getData ? JSON.parse(getData) : {
+    const getUserData = localStorage.getItem("completedLessons");
+    const userData = getUserData ? JSON.parse(getUserData) : {
         userProgress: {
             completedLessons: [],
             currentUnitIndex: 0,
             currentTopicIndex: 0,
-            currentLessonIndex: 0
+            currentLessonIndex: 0,
+            xp: 0,
+            badges: {
+
+            },
+            hearts: 5,
+            streak: 0
         }
     };
 
@@ -283,25 +289,3 @@ export async function renderLessonPlayer(lesson) {
     renderPrompt();
     updateProgressBar();
 }
-
-
-/* // First file
-export let j = null;
-export function main() {
-    function pass_variable() {
-        function place_holder_function() {
-            if ("some logic here") {
-                j = true;
-            }
-        }
-    }
-}
-
-// Second file
-import pass_variable from "/file/location/first-file.js"
-
-if (j) {
-    function here() {
-        console.log("worked!")
-    }
-} */

@@ -156,22 +156,26 @@ nav {
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
-.lesson-item.current-lesson {
+.lesson-item.lesson-current {
     background: linear-gradient(135deg, #8a2be2 0%, #4b0082 100%);
+    box-shadow:
+        0 10px 24px -9px #ba2be2,
+        inset 0 1px 1px #ffffff;
 }
 
 .lesson-item.lesson-completed {
-    background: linear-gradient(135deg, #63b989 0%, #4b8966 100%) !important;
+    background: transparent;
     box-shadow:
-        0 12px 24px -6px #3d664f,
-        inset 0 1px 1px #216a41;
+        0 10px 24px -9px #2b53e2,
+        inset 0 1px 1px #4b0082;
 }
 
 .lesson-item.lesson-uncompleted {
-    background: linear-gradient(135deg, #565656 0%, #292929 100%) !important;
+    background: linear-gradient(135deg, #331e47 0%, #200e31 100%) !important;
+    background-color: transparent !important;
     box-shadow:
-        0 12px 24px -6px #544e5966,
-        inset 0 1px 1px #ffffff4d;
+        0 10px 24px -8px #6b4b89,
+        inset 0 1px 1px #7c7474;
 }
 
 .left {

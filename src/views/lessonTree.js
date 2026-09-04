@@ -8,8 +8,6 @@ import { renderLessonPlayer } from "./lesson-player";
 export function renderLessonTree() {
     const app = document.getElementById("app");
 
-
-
     const getUserData = localStorage.getItem("completedLessons");
     const userData = getUserData ? JSON.parse(getUserData) : {
         userProgress: {
@@ -76,7 +74,7 @@ export function renderLessonTree() {
         userData.userProgress.completedLessons.includes(l.lessonId)
     );
     
-    // 3. Check for topic completion
+    // Check for topic completion
     if (completedTopicLessons.length === lessonItemCount && lessonItemCount > 0) {
         userData.userProgress.currentTopicIndex += 1;
         localStorage.setItem("completedLessons", JSON.stringify(userData));
@@ -85,6 +83,7 @@ export function renderLessonTree() {
         renderLessonTree();
         return;
     }
+
     for (let i = 0; i < lessonItemCount; i++) {
         const lesson_item = document.createElement("div");
         let p = pos[i % pos.length];
@@ -94,31 +93,33 @@ export function renderLessonTree() {
         lessonsContainer.appendChild(lesson_item);
 
         const lesson_item_icon = document.createElement("div");
-        lesson_item_icon.className = "lesson-item-icon fa-solid fa-play";
+        lesson_item_icon.className = "lesson-item-icon fa-solid fa-lock";
 
 
         const lessonTitle = currentUnit.lessons[currentTopic][i].lessonTitle;
         const currentLessonId = currentUnit.lessons[currentTopic][i].lessonId;
-        //console.log(lessonItemCount);
-        //console.log(userData.completedLessons.length);
-
-/*         if (userData.userProgress.completedLessons.length === lessonItemCount) {
-            userData.userProgress.currentTopicIndex += 1;
-            localStorage.setItem("completedLessons", JSON.stringify(userData));
-        } else {
-            console.log("Nope");
-        } */
 
         if (lessonTitle === "Check on learning") {
-            lesson_item_icon.classList.remove("fa-play");
+            lesson_item_icon.classList.remove("fa-lock");
             lesson_item_icon.classList.add("fa-star");
         }
 
         if (userData.userProgress.completedLessons.includes(currentLessonId)) {
-            lesson_item_icon.classList.remove("fa-play");
+            lesson_item_icon.classList.remove("fa-lock");
             lesson_item_icon.classList.add("fa-check");
             lesson_item.classList.remove("lesson-uncompleted");
             lesson_item.classList.add("lesson-completed");
+        }
+
+        // Check for active lesson
+        if (i === completedTopicLessons.length) {
+            lesson_item.classList.remove("lesson-uncompleted");
+            lesson_item_icon.classList.remove("fa-lock");
+            lesson_item.classList.add("lesson-current");
+            lesson_item_icon.classList.add("fa-play");
+            lesson_item.remo
+        } else {
+            //
         }
 
         lesson_item.appendChild(lesson_item_icon);
